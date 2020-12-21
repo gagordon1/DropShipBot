@@ -29,6 +29,11 @@ public interface Listing {
     public double getSourcePrice();
     
     /**
+     * @return the price of the item on the sell web site in USD
+     */
+    public double getListPrice();
+    
+    /**
      * @return the description of the listed item
      */
     public String getDescription();
