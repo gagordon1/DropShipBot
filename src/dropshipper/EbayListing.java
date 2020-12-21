@@ -14,13 +14,18 @@ public class EbayListing implements Listing {
      * that contains all necessary information to create the e-bay
      * listing.
      * @param sourceUrl the URL of the source item
-     * @param markup the multiplier applied to the buy price 
-     *     (source price + estimated shipping) to calculate the listing price.
      * @param internalId the permanent id for the listing inside our system
+     * @param startMarkup the multiplier applied to the buy price 
+     *     (source price + estimated shipping) to calculate the start price.
+     * @param reserveMarkup the multiplier applied to the buy price 
+     *     (source price + estimated shipping) to calculate the reserve price.
+     * @param buyItNowMarkup multiplier applied to start price to calculate 
+     *     the BuyItNow price. Must be greater than 1.3*startPriceMarkup
      * @param duration a valid duration type representing how long the listing will stay up
      * @throws IOException if reading the page fails
      */
-    public EbayListing(String sourceUrl, int internalId, double startPrice, double reservePrice, double buyItNowPrice , Duration duration) throws IOException {
+    public EbayListing(String sourceUrl, int internalId, double startMarkup, double reserveMarkup, 
+            double buyItNowMarkup , Duration duration) throws IOException {
         throw new RuntimeException("Not implemented!");
     }
      
@@ -32,6 +37,9 @@ public class EbayListing implements Listing {
         throw new RuntimeException("Not implemented!");
     }
     
+    /**
+     * If title is longer than 80 characters, truncate it to exactly 80.
+     */
     public String getTitle(){
         throw new RuntimeException("Not implemented!");
     }
@@ -74,10 +82,9 @@ public class EbayListing implements Listing {
         throw new RuntimeException("Not implemented!");
     }
     /**
-     * locations must have the same shipping cost.
-     * @return the locations where shipping is supported
+     * @return true if shipping to US is available, false otherwise
      */
-    public List<String> getShipToLocations(){
+    public boolean getShipsToUS(){
         throw new RuntimeException("Not implemented!");
     }
     
@@ -130,6 +137,7 @@ public class EbayListing implements Listing {
     
     /**
      * If specified, must also specify country
+     * If country is US and cant find location, default to "Houston, Texas"
      * @return the geographical region of the item
      */
     public String getLocation(){
