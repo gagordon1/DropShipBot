@@ -2,23 +2,10 @@ package dropshipper;
 
 import java.util.List;
 
-/*
- * Immutable listing object
- */
-public interface Listing {
+public interface Scraper {
     
     /**
-     * @return the internal id number of the listing
-     */
-    public int getInternalID();
-    
-    /**
-     * @return the URL for the source of the listed item
-     */
-    public String getSourceUrl();
-    
-    /**
-     * @return the title of the listed item
+     * @return the title of the target item
      */
     public String getTitle();
     
@@ -28,20 +15,9 @@ public interface Listing {
     public double getSourcePrice();
     
     /**
-     * @return the price of the item on the sell web site in USD
-     */
-    public double getListPrice();
-    
-    /**
      * @return the description of the listed item
      */
     public String getDescription();
-    
-    /**
-     * @return time of listing in UTC ISO format 
-     *    (e.g: 2019-11-14T00:55:31.820Z)
-     */
-    public String getTimeOfListing();
     
     /**
      * @return the country location of the listing
@@ -65,7 +41,27 @@ public interface Listing {
     public String getReturnsAcceptedOption();
     
     /**
+     * locations must have the same shipping cost.
+     * @return the locations where shipping is supported
+     */
+    public List<String> getShipToLocations();
+    
+    /**
      * @return list of valid image URLs for the listing
      */
     public List<String> getImageURLs();
+    
+    
+    /**
+     * @return the cost of shipping to the shipTo locations
+     */
+    public double getShippingCost();
+    
+    /**
+     * @return range of the amount of days shipping is expected to take
+     *     in the form of [minimum, maximum]
+     */
+    public int[] getExpectedShippingTime();
+    
+
 }

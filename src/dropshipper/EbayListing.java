@@ -16,7 +16,11 @@ public class EbayListing implements Listing {
      *     (source price + estimated shipping) to calculate the listing price.
      * @throws IOException if reading the page fails
      */
-    public EbayListing(String sourceUrl, double markup) throws IOException {
+    public EbayListing(String sourceUrl, double markup, int internalId) throws IOException {
+        throw new RuntimeException("Not implemented!");
+    }
+     
+    public int getInternalID(){
         throw new RuntimeException("Not implemented!");
     }
     
@@ -137,7 +141,7 @@ public class EbayListing implements Listing {
     }
     
     /**
-     * Only if paypal is offered as payment method
+     * Only if pay pal is offered as payment method
      * @return e-mail address associated with the PayPal account
      */
     public String getPayPalEmailAddress(){
@@ -153,15 +157,12 @@ public class EbayListing implements Listing {
     }
     
     /**
-     * @return lowest price willing to sell the item]
+     * @return lowest price willing to sell the item
      */
     public double getReservePrice(){
         throw new RuntimeException("Not implemented!");
     }
     
-    /**
-     * @return "ReturnsAccepted" or "ReturnsNotAccepted"
-     */
     public String getReturnsAcceptedOption(){
         throw new RuntimeException("Not implemented!");
     }
