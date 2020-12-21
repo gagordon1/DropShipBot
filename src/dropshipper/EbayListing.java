@@ -7,6 +7,8 @@ import java.util.List;
  * Immutable listing object
  */
 public class EbayListing implements Listing {
+    
+    public static enum Duration{THREE, FIVE, SEVEN, TEN}
     /**
      * Initializes a new e-bay listing object based on a source URL
      * that contains all necessary information to create the e-bay
@@ -14,9 +16,11 @@ public class EbayListing implements Listing {
      * @param sourceUrl the URL of the source item
      * @param markup the multiplier applied to the buy price 
      *     (source price + estimated shipping) to calculate the listing price.
+     * @param internalId the permanent id for the listing inside our system
+     * @param duration a valid duration type representing how long the listing will stay up
      * @throws IOException if reading the page fails
      */
-    public EbayListing(String sourceUrl, double markup, int internalId) throws IOException {
+    public EbayListing(String sourceUrl, int internalId, double startPrice, double reservePrice, double buyItNowPrice , Duration duration) throws IOException {
         throw new RuntimeException("Not implemented!");
     }
      
